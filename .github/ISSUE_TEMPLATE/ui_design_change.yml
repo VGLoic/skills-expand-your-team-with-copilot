@@ -1,0 +1,184 @@
+name: 🎨 UI/Design Change
+description: Request changes to the visual appearance, layout, or styling of the website
+title: "[UI]: "
+labels: ["ui-ux", "design", "enhancement"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request changes to how the website looks or feels - colors, layout, fonts, spacing, or overall design.
+        
+        **For teachers:** Describe what you want changed and why it would be better for students and teachers.
+
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: "What type of design change do you want?"
+      options:
+        - "Color scheme/branding changes"
+        - "Layout and spacing improvements"
+        - "Font and text changes"
+        - "Button and interactive element styling"
+        - "Mobile/responsive design fixes"
+        - "Accessibility improvements"
+        - "Overall visual redesign"
+        - "Navigation improvements"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-problem
+    attributes:
+      label: "What's wrong with the current design?"
+      description: "Describe the current appearance and why it needs to change"
+      placeholder: "Example: The website uses blue colors, but our school colors are white and lime green. Students and parents expect to see our school branding when they visit the site."
+    validations:
+      required: true
+
+  - type: textarea
+    id: desired-outcome
+    attributes:
+      label: "How do you want it to look instead?"
+      description: "Describe your vision for the new design"
+      placeholder: "Example: I want the website to use our school colors (white background with lime green accents). The header should show our school logo, and buttons should be lime green instead of blue."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-areas
+    attributes:
+      label: "Which parts of the website should change?"
+      multiple: true
+      options:
+        - "Header and navigation"
+        - "Activity cards"
+        - "Registration forms"
+        - "Login forms"
+        - "Buttons and links"
+        - "Background and overall page"
+        - "Text and fonts"
+        - "Mobile view"
+        - "All pages"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "How important is this design change?"
+      options:
+        - "Critical - Current design causes problems for users"
+        - "High - Design change would significantly improve user experience"
+        - "Medium - Would make the site more professional/appealing"
+        - "Low - Nice to have when time permits"
+    validations:
+      required: true
+
+  - type: textarea
+    id: school-branding
+    attributes:
+      label: "School branding requirements"
+      description: "What are your school's official colors, fonts, or branding guidelines?"
+      placeholder: |
+        Example:
+        - School colors: White and lime green (#32CD32)
+        - School name: Mergington High School
+        - Mascot: Eagles
+        - Logo: (if you have a specific logo or image URL)
+
+  - type: textarea
+    id: user-impact
+    attributes:
+      label: "Who will this help and how?"
+      description: "Explain how this design change will benefit students, teachers, or parents"
+      placeholder: "Example: Students will immediately recognize this as our school's website. Parents visiting for the first time will see professional school branding. Teachers will feel proud to share the link because it represents our school properly."
+    validations:
+      required: true
+
+  - type: textarea
+    id: design-inspiration
+    attributes:
+      label: "Design examples or inspiration"
+      description: "Do you have examples of websites or designs you like? Include links or descriptions"
+      placeholder: "Example: I like how [other school website] uses their school colors. Or: I saw a website with a clean green and white design that looked professional."
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "How will we know the design is complete?"
+      description: "List the specific visual changes that must be made"
+      placeholder: |
+        Example:
+        - [ ] Header background is lime green (#32CD32)
+        - [ ] Main background is white
+        - [ ] All buttons are lime green with white text
+        - [ ] School name "Mergington High School" is prominently displayed
+        - [ ] Activity cards have lime green accents
+        - [ ] Text is easy to read on all devices
+        - [ ] Mobile view looks professional
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: "Design constraints or requirements"
+      description: "Any limitations or specific requirements we should know about"
+      placeholder: "Example: Must work on mobile phones. Should not be too bright/flashy. Must be accessible for students with visual impairments."
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Additional information"
+      description: "Any other details, references, or context that would help"
+
+  - type: textarea
+    id: technical-implementation
+    attributes:
+      label: "Technical Implementation Guidance"
+      description: |
+        **For Copilot coding agent:** Technical details for implementing design changes.
+        
+        **Current Styling Architecture:**
+        - Main CSS file: `src/static/styles.css`
+        - HTML structure: `src/static/index.html`
+        - CSS uses CSS custom properties (variables) for colors
+        - Responsive design with mobile-first approach
+        - Current color scheme defined in CSS variables
+        
+        **Design System:**
+        - Layout uses CSS Grid and Flexbox
+        - Modal dialogs for registration and login
+        - Activity cards in responsive grid layout
+        - Filter sidebar with collapsible sections
+      value: |
+        **Implementation Areas:**
+        - [ ] CSS updates in `src/static/styles.css`
+        - [ ] HTML structure changes in `src/static/index.html`
+        - [ ] Asset additions (logos, images) if needed
+        - [ ] CSS custom property updates for color scheme
+        - [ ] Responsive design testing
+        
+        **CSS Architecture Notes:**
+        - Update CSS custom properties (`:root` variables) for color changes
+        - Maintain existing responsive breakpoints
+        - Preserve accessibility (contrast ratios, focus states)
+        - Test all interactive states (hover, active, focus)
+        - Ensure mobile compatibility
+        
+        **Design Implementation Steps:**
+        1. Update color variables in CSS
+        2. Modify header and navigation styling
+        3. Update button and interactive element styles
+        4. Adjust activity card appearance
+        5. Test responsive design on mobile
+        6. Verify accessibility standards
+        
+        **Testing Requirements:**
+        - [ ] Design works on desktop and mobile
+        - [ ] All interactive elements are properly styled
+        - [ ] Color contrast meets accessibility standards
+        - [ ] Layout remains functional with new design
+        - [ ] Print styles work if needed
+        - [ ] Design loads quickly and efficiently

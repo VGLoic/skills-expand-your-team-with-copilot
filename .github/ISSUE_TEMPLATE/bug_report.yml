@@ -1,0 +1,127 @@
+name: 🐛 Bug Report
+description: Report something that is broken or not working correctly
+title: "[BUG]: "
+labels: ["bug", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! This form will help us understand the problem so we can fix it quickly.
+        
+        **For teachers:** Please fill out all sections below. The more details you provide, the faster we can resolve the issue.
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: "What is broken?"
+      description: "Describe what is not working correctly. Be specific about what you expected to happen vs. what actually happened."
+      placeholder: "Example: When I try to register a student for Drama Club, I get an error message and the student is not added to the activity."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "How to reproduce the problem"
+      description: "Tell us step-by-step how to recreate this issue"
+      placeholder: |
+        1. Go to the activities page
+        2. Click on "Drama Club"
+        3. Enter student email "student@mergington.edu"
+        4. Click "Register"
+        5. See error message
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: "What part of the system is affected?"
+      options:
+        - Student registration/enrollment
+        - Activity display/viewing
+        - Teacher login/authentication
+        - Activity filtering/searching
+        - Student data management
+        - Visual/display issues
+        - Other (please describe below)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "How urgent is this issue?"
+      description: "Help us prioritize the fix"
+      options:
+        - "Critical - System is completely unusable"
+        - "High - Major functionality is broken"
+        - "Medium - Some features don't work as expected"
+        - "Low - Minor issue or cosmetic problem"
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: "Who is affected and how?"
+      description: "Tell us who this impacts (students, teachers, specific activities, etc.) and how it affects their work"
+      placeholder: "Example: This affects all teachers trying to register students for after-school activities. Students cannot be enrolled in Drama Club, Art Club, or Science Olympiad."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "How will we know this is fixed?"
+      description: "Describe what should happen when this bug is resolved"
+      placeholder: |
+        Example:
+        - Teachers can successfully register students for Drama Club
+        - No error messages appear during registration
+        - Students appear in the participant list after registration
+        - Registration works for all after-school activities
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Additional information"
+      description: "Any other details that might help us fix this issue"
+      placeholder: "Error messages, screenshots, or other relevant information"
+
+  - type: textarea
+    id: technical-hints
+    attributes:
+      label: "Technical Implementation Hints"
+      description: |
+        **For Copilot coding agent:** Technical details and suggested approaches for fixing this issue.
+        
+        Common areas to investigate:
+        - Check API endpoints in `src/backend/routers/`
+        - Verify database operations in `src/backend/database.py`
+        - Review frontend JavaScript in `src/static/app.js`
+        - Check authentication flow in `src/backend/routers/auth.py`
+        - Test form validation and error handling
+        
+        **Debugging approach:**
+        1. Reproduce the issue following the steps above
+        2. Check browser console for JavaScript errors
+        3. Review FastAPI logs for backend errors
+        4. Verify database state and data consistency
+        5. Test the specific API endpoints mentioned in the problem description
+      value: |
+        **Suggested investigation areas:**
+        - [ ] API endpoints in `src/backend/routers/`
+        - [ ] Database operations in `src/backend/database.py`
+        - [ ] Frontend JavaScript in `src/static/app.js`
+        - [ ] Authentication in `src/backend/routers/auth.py`
+        - [ ] Form validation and error handling
+        
+        **Testing requirements:**
+        - [ ] Reproduce the issue following the steps provided
+        - [ ] Verify the fix works for the specific use case
+        - [ ] Test that existing functionality still works
+        - [ ] Ensure proper error handling is in place

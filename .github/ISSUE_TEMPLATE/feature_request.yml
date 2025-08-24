@@ -1,0 +1,153 @@
+name: ✨ Feature Request
+description: Request a new feature or enhancement for the activities system
+title: "[FEATURE]: "
+labels: ["enhancement", "needs-triage"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! This form will help us understand what you need so we can build it effectively.
+        
+        **For teachers:** Please be as detailed as possible about what you want and why you need it.
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: "What new feature do you want?"
+      description: "Describe the feature you'd like to see added to the system"
+      placeholder: "Example: I want to be able to export a list of all students enrolled in each activity so I can print rosters for teachers."
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: "Why do you need this feature?"
+      description: "Explain the problem this feature would solve or how it would help you"
+      placeholder: "Example: Right now I have to manually write down student names from each activity page. This takes a lot of time and I sometimes make mistakes. An export feature would save time and ensure accuracy."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: "What type of feature is this?"
+      options:
+        - "Student management (enrollment, registration)"
+        - "Activity management (adding, editing activities)"
+        - "Reporting and data export"
+        - "User interface improvement"
+        - "Search and filtering"
+        - "Calendar and scheduling"
+        - "Communication features"
+        - "Administrative tools"
+        - "Other (please describe below)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: "How important is this feature?"
+      description: "Help us prioritize development"
+      options:
+        - "Critical - We cannot operate effectively without this"
+        - "High - This would significantly improve our workflow"
+        - "Medium - This would be helpful but we can work around it"
+        - "Low - Nice to have when time permits"
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-stories
+    attributes:
+      label: "How would you use this feature?"
+      description: "Walk us through how you would use this feature in your daily work"
+      placeholder: |
+        Example:
+        1. At the end of each week, I would go to the Activities page
+        2. I would click an "Export Rosters" button
+        3. I would select which activities I want to export
+        4. I would download a file with all the student lists
+        5. I would print the rosters and give them to activity supervisors
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "How will we know this feature is complete?"
+      description: "List the specific requirements that must be met for this feature to be considered done"
+      placeholder: |
+        Example:
+        - [ ] There is an "Export Rosters" button on the activities page
+        - [ ] Clicking it opens a dialog to select which activities to export
+        - [ ] The export creates a downloadable file (Excel or PDF)
+        - [ ] The file contains activity name, meeting time, and student list for each selected activity
+        - [ ] Teachers can select all activities or just specific ones
+        - [ ] The export includes current enrollment numbers
+    validations:
+      required: true
+
+  - type: textarea
+    id: design-suggestions
+    attributes:
+      label: "Do you have ideas for how this should look or work?"
+      description: "Any suggestions for the user interface or workflow"
+      placeholder: "Example: Maybe add a small download icon next to each activity card, or put an Export button in the top toolbar."
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Have you considered any alternatives?"
+      description: "Are there other ways to solve this problem that we should consider?"
+      placeholder: "Example: Instead of export, maybe we could add a print-friendly view of each activity's roster."
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Additional information"
+      description: "Any other details, examples, or context that would help us build this feature"
+
+  - type: textarea
+    id: technical-implementation
+    attributes:
+      label: "Technical Implementation Guidance"
+      description: |
+        **For Copilot coding agent:** Technical details and suggested approaches for implementing this feature.
+        
+        **System Architecture Context:**
+        - Backend: FastAPI with MongoDB database
+        - Frontend: HTML/CSS/JavaScript (no frameworks)
+        - Authentication: Teacher login system
+        - Current endpoints in `src/backend/routers/activities.py` and `src/backend/routers/auth.py`
+        
+        **Implementation Considerations:**
+        - Follow existing code patterns in the repository
+        - Ensure teacher authentication is required for new features
+        - Maintain simple, clean UI consistent with current design
+        - Consider mobile responsiveness
+        - Update API documentation if new endpoints are added
+      value: |
+        **Implementation Areas:**
+        - [ ] Backend API changes in `src/backend/routers/`
+        - [ ] Frontend UI in `src/static/index.html` and `src/static/styles.css`
+        - [ ] JavaScript functionality in `src/static/app.js`
+        - [ ] Database schema changes if needed
+        - [ ] Authentication and permission checks
+        
+        **Suggested Development Approach:**
+        1. Design the user interface mockup
+        2. Create new API endpoints if needed
+        3. Implement frontend interface
+        4. Add JavaScript functionality
+        5. Test with teacher authentication
+        6. Ensure mobile compatibility
+        
+        **Testing Requirements:**
+        - [ ] Feature works with teacher login
+        - [ ] UI is responsive and accessible
+        - [ ] Integration with existing activity data
+        - [ ] Error handling for edge cases
+        - [ ] Performance testing with multiple activities

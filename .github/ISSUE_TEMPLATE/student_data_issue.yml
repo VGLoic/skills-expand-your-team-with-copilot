@@ -1,0 +1,193 @@
+name: 👥 Student Data Issue
+description: Report problems with student enrollment, registration, or data management
+title: "[STUDENT DATA]: "
+labels: ["student-data", "data-management"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to report issues with student data - enrollment problems, incorrect registrations, missing students, or data inconsistencies.
+        
+        **For teachers:** Please provide specific details about the student data problem so we can fix it quickly.
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: "What type of student data issue is this?"
+      options:
+        - "Student cannot register for an activity"
+        - "Student is enrolled but shouldn't be"
+        - "Student is missing from an activity they should be in"
+        - "Student enrollment count is wrong"
+        - "Student appears in multiple conflicting activities"
+        - "Cannot remove a student from an activity"
+        - "Duplicate student entries"
+        - "Student data is incorrect or outdated"
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-students
+    attributes:
+      label: "Which students are affected?"
+      description: "List the student email addresses or names involved in this issue"
+      placeholder: |
+        Example:
+        - jane.smith@mergington.edu
+        - john.doe@mergington.edu
+        
+        Or if you can't provide specific emails:
+        - 3 students in Drama Club
+        - All students registered after last Tuesday
+    validations:
+      required: true
+
+  - type: textarea
+    id: affected-activities
+    attributes:
+      label: "Which activities are involved?"
+      description: "List the activities related to this issue"
+      placeholder: |
+        Example:
+        - Drama Club
+        - Science Olympiad
+        - Chess Club
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: "Describe the problem in detail"
+      description: "Explain exactly what is wrong with the student data"
+      placeholder: "Example: When I try to register jane.smith@mergington.edu for Drama Club, I get an error message saying 'Already signed up for this activity' but she doesn't appear in the participant list. The activity shows 15 enrolled students but I can only see 14 names."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: "What should the student data look like when fixed?"
+      description: "Describe the correct state of student enrollments"
+      placeholder: |
+        Example:
+        - jane.smith@mergington.edu should be enrolled in Drama Club
+        - Drama Club should show exactly 15 students
+        - All enrolled students should appear in the participant list
+        - No error messages when registering valid students
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "How urgent is this data issue?"
+      options:
+        - "Critical - Students cannot participate in activities"
+        - "High - Affecting multiple students or activities"
+        - "Medium - Affecting a few students or one activity"
+        - "Low - Minor data inconsistency"
+    validations:
+      required: true
+
+  - type: textarea
+    id: when-noticed
+    attributes:
+      label: "When did you first notice this problem?"
+      description: "Help us understand when this issue started"
+      placeholder: "Example: I noticed this yesterday when trying to register students for Drama Club. Last week everything was working fine."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: "How can we see this problem?"
+      description: "Step-by-step instructions to reproduce the issue"
+      placeholder: |
+        Example:
+        1. Go to the activities page
+        2. Click on "Drama Club"
+        3. Try to register jane.smith@mergington.edu
+        4. See error message
+        5. Look at participant list and notice student count doesn't match
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "How will we know this is fixed?"
+      description: "List what should be true when the student data issue is resolved"
+      placeholder: |
+        Example:
+        - [ ] jane.smith@mergington.edu successfully registers for Drama Club
+        - [ ] Drama Club participant count matches the actual number of enrolled students
+        - [ ] All enrolled students appear in the participant list
+        - [ ] No error messages when registering valid students
+        - [ ] Student can be properly removed if needed
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted-solutions
+    attributes:
+      label: "What have you already tried?"
+      description: "List any troubleshooting steps you've already attempted"
+      placeholder: "Example: I tried refreshing the page, logging out and back in, and trying a different browser. I also tried registering a different student and got the same error."
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Additional information"
+      description: "Any other details that might help us fix this issue"
+      placeholder: "Screenshots of error messages, specific times when the problem occurred, or other relevant information"
+
+  - type: textarea
+    id: technical-implementation
+    attributes:
+      label: "Technical Implementation Guidance"
+      description: |
+        **For Copilot coding agent:** Technical details for investigating and fixing student data issues.
+        
+        **Data Architecture:**
+        - Student data stored in MongoDB activity documents
+        - Activities contain `participants` array with student email addresses
+        - Signup/unregistration handled by API endpoints
+        - Frontend manages enrollment state and UI updates
+        
+        **Common Issues:**
+        - Database inconsistencies between UI and stored data
+        - Race conditions in concurrent enrollments
+        - Frontend/backend synchronization problems
+        - Data validation and duplicate handling
+      value: |
+        **Investigation Areas:**
+        - [ ] Database state in MongoDB collections
+        - [ ] API endpoint behavior in `src/backend/routers/activities.py`
+        - [ ] Frontend enrollment logic in `src/static/app.js`
+        - [ ] Authentication and permission checks
+        - [ ] Data validation and error handling
+        
+        **Debugging Steps:**
+        1. Check MongoDB data directly for affected activities
+        2. Test API endpoints with the specific student emails mentioned
+        3. Verify frontend state management and UI updates
+        4. Check for race conditions in concurrent operations
+        5. Validate authentication and authorization flow
+        
+        **Data Integrity Checks:**
+        - [ ] Verify participant arrays contain valid email addresses
+        - [ ] Check for duplicate entries in participant lists
+        - [ ] Ensure enrollment counts match array lengths
+        - [ ] Validate email format and domain restrictions
+        - [ ] Confirm activity capacity limits are enforced
+        
+        **Testing Requirements:**
+        - [ ] Reproduce the exact issue described
+        - [ ] Test the specific student/activity combinations mentioned
+        - [ ] Verify fix works for both enrollment and unenrollment
+        - [ ] Ensure data consistency after operations
+        - [ ] Test concurrent enrollment scenarios
+        - [ ] Verify proper error handling and user feedback

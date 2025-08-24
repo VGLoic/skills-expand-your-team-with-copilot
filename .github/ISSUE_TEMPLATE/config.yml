@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Development Documentation
+    url: ./docs/how-to-develop.md
+    about: Learn how to set up and develop the activities management system
+  - name: 💬 General Discussion
+    url: https://github.com/VGLoic/skills-expand-your-team-with-copilot/discussions
+    about: Ask questions, share ideas, or discuss the project with the community
