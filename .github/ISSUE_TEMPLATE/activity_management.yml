@@ -1,0 +1,194 @@
+name: 📅 Activity Management
+description: Add new activities, modify existing ones, or manage activity information
+title: "[ACTIVITY]: "
+labels: ["activity-management", "content"]
+assignees: ["copilot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request changes to activities in the system - adding new ones, modifying existing ones, or removing activities.
+        
+        **For teachers:** Please provide complete information about the activity changes you need.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: "What type of activity change do you need?"
+      options:
+        - "Add a new activity"
+        - "Modify an existing activity"
+        - "Remove an activity"
+        - "Bulk activity changes"
+        - "Change activity schedules"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-details
+    attributes:
+      label: "Activity Information"
+      description: "Provide details about the activity or activities"
+      placeholder: |
+        For NEW activities, include:
+        - Activity name
+        - Description
+        - Meeting schedule (day, time, duration)
+        - Location
+        - Maximum number of participants
+        - Supervisor/teacher in charge
+        - Any special requirements
+        
+        For EXISTING activities, include:
+        - Current activity name
+        - What needs to be changed
+        - New information
+        
+        For REMOVING activities:
+        - Activity name(s) to remove
+        - Reason for removal
+        - What to do with currently enrolled students
+    validations:
+      required: true
+
+  - type: textarea
+    id: schedule-information
+    attributes:
+      label: "Schedule Details"
+      description: "Specific scheduling information"
+      placeholder: |
+        Example:
+        - Day: Tuesday and Thursday
+        - Time: 3:30 PM - 5:00 PM
+        - Duration: 1.5 hours
+        - Frequency: Weekly throughout the semester
+        - Special dates: No meetings during exam week
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: "Maximum participants"
+      description: "How many students can participate in this activity?"
+      placeholder: "Example: 25"
+
+  - type: input
+    id: supervisor
+    attributes:
+      label: "Activity supervisor"
+      description: "Which teacher or staff member will supervise this activity?"
+      placeholder: "Example: Ms. Johnson (Art Teacher)"
+
+  - type: dropdown
+    id: activity-type
+    attributes:
+      label: "Activity category"
+      description: "What type of activity is this?"
+      options:
+        - "Sports/Athletics"
+        - "Arts (Visual/Performing)"
+        - "Academic/Educational"
+        - "STEM/Science"
+        - "Community Service"
+        - "Special Interest Club"
+        - "Student Government"
+        - "Other"
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: "How soon do you need this change?"
+      options:
+        - "Immediately - Activity starts this week"
+        - "Within 1 week - Activity starts soon"
+        - "Within 2 weeks - Normal planning timeline"
+        - "End of month - No rush"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-students
+    attributes:
+      label: "Current enrollment situation"
+      description: "For existing activities: How many students are currently enrolled? For new activities: Do you expect high demand?"
+      placeholder: "Example: Drama Club currently has 15 students enrolled out of 20 maximum spots."
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: "How will we know this is complete?"
+      description: "List what should be true when this activity change is finished"
+      placeholder: |
+        Example for NEW activity:
+        - [ ] "Robotics Club" appears in the activities list
+        - [ ] Students can register for Robotics Club
+        - [ ] Activity shows correct meeting time (Wednesdays 3:30-5:00 PM)
+        - [ ] Maximum capacity is set to 15 students
+        - [ ] Activity appears in the "STEM/Science" category
+        
+        Example for MODIFYING activity:
+        - [ ] Drama Club meeting time updated to Thursdays 4:00-6:00 PM
+        - [ ] Maximum capacity increased from 20 to 25 students
+        - [ ] Activity description updated with new information
+        - [ ] Currently enrolled students remain enrolled
+    validations:
+      required: true
+
+  - type: textarea
+    id: special-requirements
+    attributes:
+      label: "Special requirements or considerations"
+      description: "Any special needs, equipment, permissions, or considerations for this activity"
+      placeholder: "Example: Chess Club needs access to chess sets. Drama Club needs auditorium access on performance days."
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Additional information"
+      description: "Any other details that would be helpful"
+
+  - type: textarea
+    id: technical-implementation
+    attributes:
+      label: "Technical Implementation Notes"
+      description: |
+        **For Copilot coding agent:** Technical guidance for implementing activity changes.
+        
+        **Activity Data Structure:**
+        Activities are stored in MongoDB with fields like:
+        - `_id`: Activity name (unique identifier)
+        - `description`: Activity description
+        - `day_of_week`: Meeting day
+        - `start_time`, `end_time`: Schedule
+        - `max_participants`: Capacity limit
+        - `participants`: Array of enrolled student emails
+        
+        **Key Files:**
+        - Database operations: `src/backend/database.py`
+        - Activity API: `src/backend/routers/activities.py`
+        - Frontend display: `src/static/app.js`
+      value: |
+        **Implementation Areas:**
+        - [ ] Database changes in `src/backend/database.py`
+        - [ ] API endpoints in `src/backend/routers/activities.py`
+        - [ ] Frontend updates in `src/static/app.js`
+        - [ ] UI changes in `src/static/index.html` and `src/static/styles.css`
+        
+        **Activity Management Tasks:**
+        - [ ] Add/modify activity data in database initialization
+        - [ ] Update API responses to include new activity information
+        - [ ] Refresh frontend to display updated activities
+        - [ ] Handle student enrollment for modified activities
+        - [ ] Ensure teacher authentication for activity management
+        
+        **Data Validation:**
+        - [ ] Verify activity name uniqueness for new activities
+        - [ ] Validate schedule format and conflicts
+        - [ ] Check maximum participant limits
+        - [ ] Ensure proper handling of existing student enrollments
+        
+        **Testing Requirements:**
+        - [ ] New/modified activities appear correctly in the UI
+        - [ ] Student registration works for updated activities
+        - [ ] Schedule filtering works with new activities
+        - [ ] Activity cards display all required information
+        - [ ] Mobile view displays activities properly
